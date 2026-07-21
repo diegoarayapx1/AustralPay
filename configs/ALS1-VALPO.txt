@@ -1,0 +1,237 @@
+! ============================================================================
+! AustralPay — configuración sanitizada para repositorio
+! Equipo : ALS1-VALPO  ·  Rol: switch de acceso VALPO (vIOS-L2, IOS 15.2)
+! Captura: 2026-07-15 23:45 UTC — cierre del Bloque 8
+!
+! (!) AustralPay y la consultora DiegoAraya son entidades FICTICIAS, creadas
+!     exclusivamente con fines de laboratorio y portafolio. Ninguna dirección,
+!     dispositivo o configuración corresponde a una red real.
+!
+! SANITIZACIÓN — reemplazado por <REDACTED>:
+!   · enable secret / username secret .......... hash tipo 8 (SHA256)
+!   · ntp authentication-key ................... tipo 7 (reversible)
+!   · banners EULA de IOSv ..................... texto legal de Cisco, x3
+!
+! INTACTO: VLANs, port-security (incl. MACs sticky), protected ports,
+!          DHCP snooping, PortFast/BPDUGuard, descripciones.
+!
+! NOTAS DE DISEÑO:
+!   · `vtp mode transparent` → agregado en el B8. Era el único de los 6
+!     switches en VTP server (el default), y por eso sus VLANs vivían solo en
+!     `vlan.dat`: este archivo NO listaba ninguna VLAN y no servía para
+!     reconstruir el equipo. Un switch en VTP server además adopta el primer
+!     dominio que le llegue por una troncal y puede perder VLANs.
+!   · `no ip routing`  → el vIOS-L2 trae `ip routing` ACTIVO por defecto, lo
+!     que anula silenciosamente el `ip default-gateway`. (Hallazgo Bloque 6.)
+!   · Sin VLAN 888     → los 8 puertos de este switch están en uso. La
+!     política de puerto no usado (§7.4) se cumple por ausencia de superficie.
+!   · `privilege ...`  → cadena del rol operador nivel 14. (§7.3, Bloque 6.)
+! ============================================================================
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname ALS1-VALPO
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 8 <REDACTED>
+!
+username admin privilege 15 secret 8 <REDACTED>
+username operador privilege 14 secret 8 <REDACTED>
+no aaa new-model
+!
+vtp mode transparent
+no ip routing
+!
+ip dhcp snooping vlan 40,55
+no ip dhcp snooping information option
+ip dhcp snooping
+no ip domain-lookup
+ip domain-name australpay.lab
+no ip cef
+login block-for 120 attempts 3 within 60
+login delay 1
+login on-failure log
+login on-success log
+no ipv6 cef
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan 40
+ name Oficina
+!
+vlan 41
+ name Gestion
+!
+vlan 55
+ name Invitados
+!
+vlan 999
+ name NATIVA_SIN_USO
+!
+interface Port-channel2
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ ip dhcp snooping trust
+!
+interface Port-channel3
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/0
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 2 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/1
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 2 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/2
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 3 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/3
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 3 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0
+ description V40A :: Oficina :: VLAN 40
+ switchport access vlan 40
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0050.7966.6809
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/1
+ description V41A :: Gestion :: VLAN 41
+ switchport access vlan 41
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0050.7966.680a
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/2
+ description V55A :: Invitado :: VLAN 55
+ switchport access vlan 55
+ switchport mode access
+ switchport nonegotiate
+ switchport protected
+ switchport port-security violation restrict
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/3
+ description V55B :: Invitado :: VLAN 55
+ switchport access vlan 55
+ switchport mode access
+ switchport nonegotiate
+ switchport protected
+ switchport port-security violation restrict
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface Vlan41
+ ip address 10.2.41.10 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.2.41.1
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard MGMT-VTY-ACCESS
+ permit 10.2.41.0 0.0.0.255
+ permit 10.1.30.0 0.0.0.255
+ deny   any log
+!
+control-plane
+!
+privilege interface level 14 switchport access vlan
+privilege interface level 14 switchport access
+privilege interface level 14 switchport
+privilege configure level 14 interface
+privilege exec level 14 configure terminal
+privilege exec level 14 configure
+!
+banner exec ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner incoming ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner login ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+!
+ntp authentication-key 1 md5 <REDACTED> 7
+ntp authenticate
+ntp trusted-key 1
+ntp source Vlan41
+ntp server 10.1.30.254 key 1
+!
+end

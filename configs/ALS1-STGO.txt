@@ -1,0 +1,263 @@
+! ============================================================================
+! AustralPay — configuración sanitizada para repositorio
+! Equipo : ALS1-STGO  ·  Rol: switch de acceso STGO (vIOS-L2, IOS 15.2)
+! Captura: 2026-07-15 23:34 UTC — cierre del Bloque 8
+!
+! (!) AustralPay y la consultora DiegoAraya son entidades FICTICIAS, creadas
+!     exclusivamente con fines de laboratorio y portafolio. Ninguna dirección,
+!     dispositivo o configuración corresponde a una red real.
+!
+! SANITIZACIÓN — reemplazado por <REDACTED>:
+!   · enable secret / username secret .......... hash tipo 8 (SHA256)
+!   · ntp authentication-key ................... tipo 7 (reversible)
+!   · banners EULA de IOSv ..................... texto legal de Cisco, x3
+!
+! INTACTO: VLANs, port-security (incl. MACs sticky), protected ports,
+!          DHCP snooping, PortFast/BPDUGuard, descripciones.
+!
+! NOTAS DE DISEÑO:
+!   · `no ip routing`  → el vIOS-L2 trae `ip routing` ACTIVO por defecto, lo
+!     que anula silenciosamente el `ip default-gateway`. (Hallazgo Bloque 6.)
+!   · Sin VLAN 888     → los 10 puertos de este switch están en uso. La
+!     política de puerto no usado (§7.4) se cumple por ausencia de superficie.
+!     Se declara en vez de fabricar puertos para demostrarla. (Decisión B8-#1.)
+!   · `privilege ...`  → cadena del rol operador nivel 14: asignar VLANs a
+!     puertos de acceso, sin shutdown/no shutdown. (§7.3, Bloque 6.)
+! ============================================================================
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname ALS1-STGO
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 8 <REDACTED>
+!
+username admin privilege 15 secret 8 <REDACTED>
+username operador privilege 14 secret 8 <REDACTED>
+no aaa new-model
+!
+vtp mode transparent
+no ip routing
+!
+ip dhcp snooping vlan 20,50
+no ip dhcp snooping information option
+ip dhcp snooping
+no ip domain-lookup
+ip domain-name australpay.lab
+no ip cef
+login block-for 120 attempts 3 within 60
+login delay 1
+login on-failure log
+login on-success log
+no ipv6 cef
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+!
+vlan 10
+ name Servidores-App
+!
+vlan 15
+ name Servidores-DB
+!
+vlan 20
+ name Operaciones
+!
+vlan 30
+ name Gestion
+!
+vlan 50
+ name Invitados
+!
+vlan 999
+ name NATIVA_SIN_USO
+!
+interface Port-channel2
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ ip dhcp snooping trust
+!
+interface Port-channel3
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/0
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 2 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/1
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 2 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/2
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 3 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet0/3
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 3 mode active
+ ip dhcp snooping trust
+!
+interface GigabitEthernet1/0
+ description S10A :: austral-app :: VLAN 10
+ switchport access vlan 10
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0050.7966.6804
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/1
+ description S15A :: austral-db :: VLAN 15
+ switchport access vlan 15
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0050.7966.6810
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/2
+ description S20A :: Operaciones :: VLAN 20
+ switchport access vlan 20
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0050.7966.6805
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet1/3
+ description S30A :: Gestion :: VLAN 30
+ switchport access vlan 30
+ switchport mode access
+ switchport nonegotiate
+ switchport port-security maximum 2
+ switchport port-security violation restrict
+ switchport port-security mac-address sticky
+ switchport port-security mac-address sticky 0050.7966.680f
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/0
+ description S50A :: Invitado :: VLAN 50
+ switchport access vlan 50
+ switchport mode access
+ switchport nonegotiate
+ switchport protected
+ switchport port-security violation restrict
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface GigabitEthernet2/1
+ description S50B :: Invitado :: VLAN 50
+ switchport access vlan 50
+ switchport mode access
+ switchport nonegotiate
+ switchport protected
+ switchport port-security violation restrict
+ switchport port-security
+ negotiation auto
+ spanning-tree portfast edge
+ spanning-tree bpduguard enable
+!
+interface Vlan30
+ ip address 10.1.30.10 255.255.255.0
+ no ip route-cache
+!
+ip default-gateway 10.1.30.1
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard MGMT-VTY-ACCESS
+ permit 10.1.30.0 0.0.0.255
+ deny   any log
+!
+control-plane
+!
+privilege interface level 14 switchport access vlan
+privilege interface level 14 switchport access
+privilege interface level 14 switchport
+privilege configure level 14 interface
+privilege exec level 14 configure terminal
+privilege exec level 14 configure
+!
+banner exec ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner incoming ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner login ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+!
+ntp authentication-key 1 md5 <REDACTED> 7
+ntp authenticate
+ntp trusted-key 1
+ntp source Vlan30
+ntp server 10.1.30.254 key 1
+!
+end

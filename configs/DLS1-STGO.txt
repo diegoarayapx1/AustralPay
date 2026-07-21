@@ -1,0 +1,317 @@
+! ============================================================================
+! AustralPay — configuración sanitizada para repositorio
+! Equipo : DLS1-STGO  ·  Rol: distribución/núcleo STGO (vIOS-L2, IOS 15.2)
+! Captura: 2026-07-15 23:34 UTC — cierre del Bloque 8
+!
+! (!) AustralPay y la consultora DiegoAraya son entidades FICTICIAS, creadas
+!     exclusivamente con fines de laboratorio y portafolio. Ninguna dirección,
+!     dispositivo o configuración corresponde a una red real.
+!
+! SANITIZACIÓN — reemplazado por <REDACTED>:
+!   · enable secret / username secret .......... hash tipo 8 (SHA256)
+!   · ntp authentication-key ................... tipo 7 (reversible)
+!   · banners EULA de IOSv ..................... texto legal de Cisco, x3
+!
+! INTACTO: direccionamiento, ACLs de política, HSRP, RPVST+, OSPF, DHCP,
+!          EtherChannel, descripciones. Ahí vive el contenido del entregable.
+!
+! Roles HSRP de este equipo: ACTIVO en V10 / V15 / V30 (prioridad 105)
+!                            STANDBY en V20 / V50 (prioridad 100 implícita)
+! Root RPVST+ : primario en V10/V15/V30, secundario en V20/V50
+! DHCP        : mitad baja del split-scope (.11-.132) de V20 y V50
+! ============================================================================
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname DLS1-STGO
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 8 <REDACTED>
+!
+username admin privilege 15 secret 8 <REDACTED>
+username operador privilege 14 secret 8 <REDACTED>
+no aaa new-model
+!
+vtp mode transparent
+!
+ip dhcp excluded-address 10.1.20.1 10.1.20.10
+ip dhcp excluded-address 10.1.20.133 10.1.20.254
+ip dhcp excluded-address 10.1.50.1 10.1.50.10
+ip dhcp excluded-address 10.1.50.133 10.1.50.254
+!
+ip dhcp pool VLAN20-OPERACIONES
+ network 10.1.20.0 255.255.255.0
+ default-router 10.1.20.1
+ dns-server 9.9.9.9
+ lease 7
+!
+ip dhcp pool VLAN50-INVITADOS
+ network 10.1.50.0 255.255.255.0
+ default-router 10.1.50.1
+ dns-server 9.9.9.9
+ lease 0 2
+!
+no ip domain-lookup
+ip domain-name australpay.lab
+ip cef
+login block-for 120 attempts 3 within 60
+login delay 1
+login on-failure log
+login on-success log
+no ipv6 cef
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 10,15,30 priority 24576
+spanning-tree vlan 20,50 priority 28672
+!
+vlan 10
+ name Servidores-App
+!
+vlan 15
+ name Servidores-DB
+!
+vlan 20
+ name Operaciones
+!
+vlan 30
+ name Gestion
+!
+vlan 50
+ name Invitados
+!
+vlan 99
+ name Transito_OSPF_DLS
+!
+vlan 888
+ name PARKING-NO-USADO
+ shutdown
+!
+vlan 999
+ name NATIVA_SIN_USO
+!
+track 1 interface GigabitEthernet1/0 line-protocol
+!
+interface Port-channel1
+ switchport trunk allowed vlan 10,15,20,30,50,99
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface Port-channel2
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/0
+ switchport trunk allowed vlan 10,15,20,30,50,99
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/1
+ switchport trunk allowed vlan 10,15,20,30,50,99
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/2
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 2 mode active
+!
+interface GigabitEthernet0/3
+ switchport trunk allowed vlan 10,15,20,30,50
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 2 mode active
+!
+interface GigabitEthernet1/0
+ description Uplink_a_BR-STGO
+ no switchport
+ ip address 10.255.1.1 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ description PUERTO NO USADO - PARQUEADO B8
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ description PUERTO NO USADO - PARQUEADO B8
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ description PUERTO NO USADO - PARQUEADO B8
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ negotiation auto
+!
+interface Vlan10
+ description SVI_Servidores
+ ip address 10.1.10.2 255.255.255.0
+ ip access-group POL-V10-APP in
+ standby version 2
+ standby 10 ip 10.1.10.1
+ standby 10 priority 105
+ standby 10 preempt delay minimum 30
+ standby 10 track 1 decrement 10
+!
+interface Vlan15
+ description Servidores-DB
+ ip address 10.1.15.2 255.255.255.0
+ ip access-group POL-V15-DB in
+ ip access-group POL-V15-DB-ACCESO out
+ standby version 2
+ standby 15 ip 10.1.15.1
+ standby 15 priority 105
+ standby 15 preempt delay minimum 30
+ standby 15 track 1 decrement 10
+!
+interface Vlan20
+ description SVI_Operaciones
+ ip address 10.1.20.2 255.255.255.0
+ ip access-group POL-V20-OPER in
+ standby version 2
+ standby 20 ip 10.1.20.1
+ standby 20 preempt delay minimum 30
+ standby 20 track 1 decrement 10
+!
+interface Vlan30
+ description SVI_Gestion
+ ip address 10.1.30.2 255.255.255.0
+ standby version 2
+ standby 30 ip 10.1.30.1
+ standby 30 priority 105
+ standby 30 preempt delay minimum 30
+ standby 30 track 1 decrement 10
+!
+interface Vlan50
+ description Invitados
+ ip address 10.1.50.2 255.255.255.0
+ ip access-group POL-V50-INV in
+ standby version 2
+ standby 50 ip 10.1.50.1
+ standby 50 preempt delay minimum 30
+ standby 50 track 1 decrement 10
+!
+interface Vlan99
+ description Transito_OSPF_DLS1-DLS2
+ ip address 10.255.99.1 255.255.255.252
+ ip ospf network point-to-point
+!
+router ospf 1
+ router-id 10.1.1.1
+ passive-interface default
+ no passive-interface GigabitEthernet1/0
+ no passive-interface Vlan99
+ network 10.1.10.2 0.0.0.0 area 1
+ network 10.1.15.0 0.0.0.255 area 1
+ network 10.1.20.2 0.0.0.0 area 1
+ network 10.1.30.2 0.0.0.0 area 1
+ network 10.1.50.0 0.0.0.255 area 1
+ network 10.255.1.1 0.0.0.0 area 1
+ network 10.255.99.1 0.0.0.0 area 1
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard MGMT-VTY-ACCESS
+ permit 10.1.30.0 0.0.0.255
+ deny   any log
+!
+ip access-list extended POL-V10-APP
+ permit ip 10.1.10.0 0.0.0.255 10.1.15.0 0.0.0.255
+ permit icmp 10.1.10.0 0.0.0.255 10.1.20.0 0.0.0.255 echo-reply
+ permit icmp 10.1.10.0 0.0.0.255 10.1.30.0 0.0.0.255 echo-reply
+ deny   ip any 10.0.0.0 0.255.255.255
+ permit ip any any
+ip access-list extended POL-V15-DB
+ permit udp any host 224.0.0.102 eq 1985
+ permit icmp 10.1.15.0 0.0.0.255 10.1.10.0 0.0.0.255 echo-reply
+ permit icmp 10.1.15.0 0.0.0.255 10.1.30.0 0.0.0.255 echo-reply
+ deny   ip any any log
+ip access-list extended POL-V15-DB-ACCESO
+ permit ip 10.1.10.0 0.0.0.255 10.1.15.0 0.0.0.255
+ permit ip 10.1.30.0 0.0.0.255 10.1.15.0 0.0.0.255
+ deny   ip any any log
+ip access-list extended POL-V20-OPER
+ permit ip 10.1.20.0 0.0.0.255 10.1.10.0 0.0.0.255
+ permit udp any host 10.1.20.2 eq bootps
+ permit udp any host 10.1.20.3 eq bootps
+ permit icmp 10.1.20.0 0.0.0.255 10.1.30.0 0.0.0.255 echo-reply
+ deny   ip any 10.1.15.0 0.0.0.255 log
+ deny   ip any 10.0.0.0 0.255.255.255
+ permit ip any any
+ip access-list extended POL-V50-INV
+ permit udp any host 10.1.50.2 eq bootps
+ permit udp any host 10.1.50.3 eq bootps
+ permit icmp 10.1.50.0 0.0.0.255 10.1.30.0 0.0.0.255 echo-reply
+ deny   ip any 10.1.15.0 0.0.0.255 log
+ deny   ip any 10.0.0.0 0.255.255.255
+ permit ip any any
+!
+control-plane
+!
+banner exec ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner incoming ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner login ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+!
+ntp authentication-key 1 md5 <REDACTED> 7
+ntp authenticate
+ntp trusted-key 1
+ntp source Vlan30
+ntp server 10.1.30.254 key 1
+!
+end

@@ -1,0 +1,249 @@
+! ============================================================================
+! AustralPay — configuración sanitizada para repositorio
+! Equipo : BR-VALPO  ·   Rol: router de borde VALPO (CSR1000v, IOS-XE 17.3)
+! Captura: 2026-07-15 23:35 UTC — cierre del Bloque 8
+!
+! (!) AustralPay y la consultora DiegoAraya son entidades FICTICIAS, creadas
+!     exclusivamente con fines de laboratorio y portafolio. Ninguna dirección,
+!     dispositivo o configuración corresponde a una red real.
+!     Las direcciones "públicas" usan rangos de documentación (RFC 5737).
+!
+! SANITIZACIÓN — reemplazado por <REDACTED>:
+!   · enable secret / username secret .......... hash tipo 8 (SHA256)
+!   · crypto isakmp key ........................ estaba en texto claro
+!   · ntp authentication-key ................... tipo 7 (reversible)
+!   · crypto pki certificate chain ............. certificados autofirmados
+!   · license udi sn ........................... serial de la instancia
+!
+! INTACTO: direccionamiento, ACLs, políticas, OSPF, BGP, NAT, route-maps,
+!          prefix-lists, descripciones. Ahí vive el contenido del entregable.
+!
+! NOTA — artefactos de fábrica presentes y NO configurados por DiegoAraya:
+!   · crypto pki trustpoint TP-self-signed-* / SLA-TrustPoint  → los genera
+!     IOS solo. El servidor HTTPS que los usaba fue deshabilitado en el B8.
+!   · call-home / service call-home  → viene con Smart Licensing.
+! ============================================================================
+!
+version 17.3
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+! Call-home is enabled by Smart-Licensing.
+service call-home
+platform qfp utilization monitor load 80
+platform punt-keepalive disable-kernel-core
+platform console serial
+!
+hostname BR-VALPO
+!
+boot-start-marker
+boot-end-marker
+!
+security passwords min-length 9
+enable secret 8 <REDACTED>
+!
+no aaa new-model
+!
+no ip domain lookup
+ip domain name australpay.lab
+!
+login block-for 120 attempts 3 within 60
+login delay 1
+login on-failure log
+login on-success log
+!
+subscriber templating
+multilink bundle-name authenticated
+!
+crypto pki trustpoint TP-self-signed-3818220041
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3818220041
+ revocation-check none
+ rsakeypair TP-self-signed-3818220041
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki certificate chain TP-self-signed-3818220041
+ certificate self-signed 01
+  <REDACTED — cadena de certificado autofirmado generada por IOS>
+        quit
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  <REDACTED — certificado CA de Cisco Licensing, incluido con la imagen>
+        quit
+!
+license udi pid CSR1000V sn <REDACTED>
+diagnostic bootup level minimal
+memory free low-watermark processor 71477
+!
+spanning-tree extend system-id
+!
+username admin privilege 15 secret 8 <REDACTED>
+username operador privilege 14 secret 8 <REDACTED>
+!
+redundancy
+!
+crypto isakmp policy 10
+ encryption aes 256
+ hash sha256
+ authentication pre-share
+ group 14
+crypto isakmp key <REDACTED> address 192.0.2.100
+!
+crypto ipsec transform-set AUSTRALPAY-TS esp-aes 256 esp-sha256-hmac
+ mode tunnel
+!
+crypto ipsec profile AUSTRALPAY-PROFILE
+ set transform-set AUSTRALPAY-TS
+!
+interface Loopback0
+ description Loopback publico - anclaje VPN
+ ip address 192.0.2.101 255.255.255.255
+!
+interface Loopback41
+ description GESTION - alcanzable desde 10.1.30.0/24 via tunel
+ ip address 10.2.41.254 255.255.255.255
+!
+interface Tunnel0
+ description GRE-over-IPSec hacia BR-STGO
+ ip address 10.255.0.2 255.255.255.252
+ ip access-group INTERSITE-FILTER-IN in
+ tunnel source Loopback0
+ tunnel destination 192.0.2.100
+ tunnel protection ipsec profile AUSTRALPAY-PROFILE
+!
+interface GigabitEthernet1
+ description BR-VALPO -> ISP-1 (ISP-C)
+ ip address 198.51.100.2 255.255.255.252
+ ip nat outside
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ description BR-VALPO -> ISP-2 (ISP-D)
+ ip address 198.51.100.6 255.255.255.252
+ ip nat outside
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ description BR-VALPO -> MLS1-VALPO
+ ip address 10.255.2.2 255.255.255.252
+ ip nat inside
+ ip ospf network point-to-point
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet4
+ description BR-VALPO -> MLS2-VALPO
+ ip address 10.255.2.6 255.255.255.252
+ ip nat inside
+ ip ospf network point-to-point
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+router ospf 1
+ router-id 10.255.255.2
+ passive-interface default
+ no passive-interface GigabitEthernet3
+ no passive-interface GigabitEthernet4
+ no passive-interface Tunnel0
+ network 10.2.41.254 0.0.0.0 area 2
+ network 10.255.0.0 0.0.0.3 area 0
+ network 10.255.2.0 0.0.0.3 area 2
+ network 10.255.2.4 0.0.0.3 area 2
+ default-information originate
+!
+router bgp 65010
+ bgp router-id 192.0.2.101
+ bgp log-neighbor-changes
+ network 192.0.2.101 mask 255.255.255.255
+ neighbor 198.51.100.1 remote-as 65001
+ neighbor 198.51.100.1 allowas-in 1
+ neighbor 198.51.100.1 route-map LOCALPREF-ISP1-IN in
+ neighbor 198.51.100.1 route-map PASS-OUT out
+ neighbor 198.51.100.5 remote-as 65002
+ neighbor 198.51.100.5 allowas-in 1
+ neighbor 198.51.100.5 route-map LOCALPREF-ISP2-IN in
+ neighbor 198.51.100.5 route-map PREPEND-ISP2-OUT out
+!
+ip forward-protocol nd
+no ip http server
+no ip http secure-server
+!
+ip nat inside source route-map NAT-ISP1 interface GigabitEthernet1 overload
+ip nat inside source route-map NAT-ISP2 interface GigabitEthernet2 overload
+ip ssh version 2
+!
+ip access-list standard MGMT-VTY-ACCESS
+ 10 permit 10.2.41.0 0.0.0.255
+ 15 permit 10.1.30.0 0.0.0.255
+ 20 deny   any log
+!
+ip access-list extended INTERSITE-FILTER-IN
+ 10 permit ospf any any
+ 20 permit ip 10.1.30.0 0.0.0.255 10.2.41.0 0.0.0.255
+ 30 deny   ip 10.1.0.0 0.0.255.255 10.2.0.0 0.0.255.255 log
+ 40 deny   ip any any log
+ip access-list extended NAT-EXCLUDE-VPN
+ 10 deny   ip 10.2.0.0 0.0.255.255 10.1.0.0 0.0.255.255
+ 20 permit ip 10.2.0.0 0.0.255.255 any
+!
+ip prefix-list ANUNCIO-PROPIO seq 5 permit 192.0.2.101/32
+!
+route-map NAT-ISP1 permit 10
+ match ip address NAT-EXCLUDE-VPN
+ match interface GigabitEthernet1
+!
+route-map NAT-ISP2 permit 10
+ match ip address NAT-EXCLUDE-VPN
+ match interface GigabitEthernet2
+!
+route-map LOCALPREF-ISP1-IN permit 10
+ set local-preference 200
+!
+route-map LOCALPREF-ISP2-IN permit 10
+ set local-preference 100
+!
+route-map PREPEND-ISP2-OUT permit 10
+ match ip address prefix-list ANUNCIO-PROPIO
+ set as-path prepend 65010 65010
+!
+route-map PASS-OUT permit 10
+ match ip address prefix-list ANUNCIO-PROPIO
+!
+control-plane
+!
+line con 0
+ logging synchronous
+ login local
+ stopbits 1
+line vty 0 4
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ ! the email address configured in Cisco Smart License Portal will be used as contact email address to send SCH notifications.
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+ntp authentication-key 1 md5 <REDACTED> 7
+ntp authenticate
+ntp trusted-key 1
+ntp source Loopback41
+ntp server 10.1.30.254 key 1
+!
+end

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1330" width="1700" height="1330">
+<rect width="1700" height="1330" fill="#ffffff"/>
+<text x="40" y="44" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">AustralPay — WAN: el túnel GRE-over-IPSec y la salida a internet</text>
+<text x="40" y="68" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">El enlace entre sedes es una línea recta que no existe. Bloque 8 · DiegoAraya</text>
+<text x="1660" y="44" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="normal">ARQ-004 · WAN/BGP/VPN</text>
+<text x="1660" y="62" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="normal">3 de 3</text>
+<rect x="40" y="80" width="1620" height="1.2" fill="#dde3ea"/>
+<rect x="60" y="100" width="1020" height="560" rx="10" fill="#fbfcfd" stroke="#dde3ea" stroke-width="1.4"/>
+<text x="80" y="126" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Las dos verdades del mismo enlace</text>
+<text x="80" y="144" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Ambas son ciertas al mismo tiempo. Ningún diagrama único puede dibujar las dos sin decir cuál es cuál.</text>
+<rect x="470" y="180" width="200" height="72" rx="6" fill="#ffffff" stroke="#7a8794" stroke-width="1.5"/>
+<text x="570" y="206" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">ISP-1</text>
+<text x="570" y="224" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">AS 65001</text>
+<text x="570" y="241" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" fill="#2f7a4f" text-anchor="middle" font-weight="bold" font-style="normal">LocalPref 200 · primario</text>
+<rect x="470" y="300" width="200" height="72" rx="6" fill="#ffffff" stroke="#7a8794" stroke-width="1.5" stroke-dasharray="6 4"/>
+<text x="570" y="326" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#5b6b7d" text-anchor="middle" font-weight="bold" font-style="normal">ISP-2</text>
+<text x="570" y="344" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">AS 65002</text>
+<text x="570" y="361" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">LocalPref 100 · secundario</text>
+<text x="570" y="166" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="italic">sustrato del laboratorio — fuera del AS 65010</text>
+<rect x="120" y="430" width="220" height="86" rx="6" fill="#e6eefb" stroke="#2563aa" stroke-width="1.6"/>
+<text x="230" y="456" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">BR-STGO</text>
+<text x="230" y="474" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">AS 65010</text>
+<text x="230" y="492" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">Loopback0 192.0.2.100/32</text>
+<text x="230" y="508" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="8.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">único prefijo que anuncia</text>
+<rect x="800" y="430" width="220" height="86" rx="6" fill="#e6eefb" stroke="#2563aa" stroke-width="1.6"/>
+<text x="910" y="456" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">BR-VALPO</text>
+<text x="910" y="474" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">AS 65010</text>
+<text x="910" y="492" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">Loopback0 192.0.2.101/32</text>
+<text x="910" y="508" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="8.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">único prefijo que anuncia</text>
+<line x1="300" y1="430" x2="500" y2="252" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round"/>
+<line x1="340" y1="448" x2="470" y2="344" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 4"/>
+<line x1="840" y1="430" x2="640" y2="252" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round"/>
+<line x1="800" y1="448" x2="670" y2="344" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-dasharray="5 4"/>
+<text x="378" y="352" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="8.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi2</text>
+<text x="418" y="412" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="8.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi3</text>
+<text x="762" y="352" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="8.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1</text>
+<text x="724" y="412" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="8.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi2</text>
+<text x="570" y="398" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="italic">4 sesiones eBGP</text>
+<line x1="300" y1="430" x2="500" y2="252" stroke="#6d3fc4" stroke-width="5" stroke-linecap="round"/>
+<line x1="840" y1="430" x2="640" y2="252" stroke="#6d3fc4" stroke-width="5" stroke-linecap="round"/>
+<rect x="450" y="262" width="240" height="46" rx="6" fill="#ffffff" stroke="#6d3fc4" stroke-width="1.6"/>
+<text x="570" y="280" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">LO QUE HACE EL PAQUETE</text>
+<text x="570" y="297" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">192.0.2.100 → ISP-1 → 192.0.2.101</text>
+<line x1="230" y1="560" x2="910" y2="560" stroke="#6d3fc4" stroke-width="3" stroke-linecap="round" stroke-dasharray="11 7"/>
+<rect x="420" y="538" width="300" height="44" rx="6" fill="#f3eefc" stroke="#6d3fc4" stroke-width="1.6"/>
+<text x="570" y="556" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">LO QUE VE OSPF</text>
+<text x="570" y="572" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">Tunnel0 · 10.255.0.0/30 · área 0</text>
+<line x1="230" y1="516" x2="230" y2="560" stroke="#6d3fc4" stroke-width="3" stroke-linecap="round" stroke-dasharray="11 7"/>
+<line x1="910" y1="516" x2="910" y2="560" stroke="#6d3fc4" stroke-width="3" stroke-linecap="round" stroke-dasharray="11 7"/>
+<text x="570" y="604" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">Un enlace punto a punto entre dos routers. Ningún cable los une:</text>
+<text x="570" y="622" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">esta línea no existe. Lo que existe es el camino de arriba, y lo elige BGP.</text>
+<text x="570" y="644" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="italic">Por eso el diagrama 1 la dibuja punteada y la desmiente en la etiqueta.</text>
+<rect x="1120" y="100" width="540" height="560" rx="10" fill="#fbfcfd" stroke="#dde3ea" stroke-width="1.4"/>
+<text x="1140" y="126" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Por qué GRE *y* IPSec</text>
+<text x="1140" y="144" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">La pregunta de entrevista de este diseño.</text>
+<rect x="1150" y="176" width="480" height="260" rx="5" fill="#e6eefb" stroke="#2563aa" stroke-width="1.5"/>
+<text x="1390" y="192" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">IP externo  192.0.2.100 → 192.0.2.101</text>
+<text x="1390" y="206" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="8.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">lo único que el ISP rutea y ve</text>
+<rect x="1172" y="212" width="436" height="188" rx="5" fill="#f3eefc" stroke="#6d3fc4" stroke-width="1.5"/>
+<text x="1390" y="228" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">ESP  ·  AES-256 / SHA-256-HMAC</text>
+<text x="1390" y="242" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="8.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">cifra y autentica: el ISP no puede leer</text>
+<rect x="1194" y="248" width="392" height="116" rx="5" fill="#e6f4ea" stroke="#2f7a4f" stroke-width="1.5"/>
+<text x="1390" y="264" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">GRE</text>
+<text x="1390" y="278" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="8.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">encapsula — y hace transportable el multicast</text>
+<rect x="1216" y="284" width="348" height="44" rx="5" fill="#fdf2e2" stroke="#a8701c" stroke-width="1.5"/>
+<text x="1390" y="300" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">IP interno  10.1.30.11 → 10.2.41.10</text>
+<text x="1390" y="314" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="8.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">el ISP nunca lo ve</text>
+<text x="1390" y="462" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#c2410c" text-anchor="middle" font-weight="bold" font-style="normal">IPSec en modo túnel solo transporta UNICAST.</text>
+<text x="1390" y="482" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#14202e" text-anchor="middle" font-weight="normal" font-style="normal">Sin GRE no pasa el multicast de OSPF (224.0.0.5).</text>
+<text x="1390" y="500" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#14202e" text-anchor="middle" font-weight="normal" font-style="normal">Sin multicast no hay adyacencia sobre el túnel.</text>
+<text x="1390" y="518" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#14202e" text-anchor="middle" font-weight="normal" font-style="normal">Sin adyacencia no hay área 0 — y sin área 0 no hay</text>
+<text x="1390" y="536" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#14202e" text-anchor="middle" font-weight="normal" font-style="normal">ruteo dinámico entre sedes: vuelves a rutas estáticas.</text>
+<rect x="1150" y="558" width="480" height="82" rx="6" fill="#f3eefc" stroke="#6d3fc4" stroke-width="1.4"/>
+<text x="1390" y="582" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">GRE aporta la interfaz ruteable y el multicast.</text>
+<text x="1390" y="602" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#6d3fc4" text-anchor="middle" font-weight="normal" font-style="normal">IPSec aporta la confidencialidad. Ninguno de los dos</text>
+<text x="1390" y="622" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#6d3fc4" text-anchor="middle" font-weight="normal" font-style="normal">hace el trabajo del otro. Por eso van los dos.</text>
+<rect x="60" y="690" width="780" height="300" rx="8" fill="#ffffff" stroke="#dde3ea" stroke-width="1.6"/>
+<text x="78" y="716" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#2f7a4f" text-anchor="start" font-weight="bold" font-style="normal">ESTADO NORMAL — ISP-1 arriba</text>
+<text x="78" y="748" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Ruta por defecto en BR-STGO</text>
+<rect x="360" y="734" width="210" height="22" rx="4" fill="#ffffff" stroke="#2f7a4f" stroke-width="1.3"/>
+<text x="465" y="749" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#2f7a4f" text-anchor="middle" font-weight="bold" font-style="normal">0.0.0.0/0  Tag 65001</text>
+<text x="588" y="748" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">aprendida por eBGP · la elige LocalPref 200</text>
+<text x="78" y="792" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">NAT: qué route-map matchea</text>
+<rect x="360" y="778" width="210" height="22" rx="4" fill="#ffffff" stroke="#2f7a4f" stroke-width="1.3"/>
+<text x="465" y="793" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#2f7a4f" text-anchor="middle" font-weight="bold" font-style="normal">NAT-ISP1 → 203.0.113.2</text>
+<text x="588" y="792" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">match interface Gi2 · el NAT sigue al ruteo</text>
+<text x="78" y="836" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Ping a internet desde V20</text>
+<rect x="360" y="822" width="210" height="22" rx="4" fill="#ffffff" stroke="#2f7a4f" stroke-width="1.3"/>
+<text x="465" y="837" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#2f7a4f" text-anchor="middle" font-weight="bold" font-style="normal">ttl=253  ·  vía ISP-1</text>
+<text x="588" y="836" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">sostenido</text>
+<text x="78" y="880" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Túnel a VALPO (V40A)</text>
+<rect x="360" y="866" width="210" height="22" rx="4" fill="#ffffff" stroke="#2f7a4f" stroke-width="1.3"/>
+<text x="465" y="881" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#2f7a4f" text-anchor="middle" font-weight="bold" font-style="normal">383/383</text>
+<text x="588" y="880" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">383/383</text>
+<text x="360" y="924" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#2f7a4f" text-anchor="start" font-weight="normal" font-style="italic">área 0 estable</text>
+<text x="78" y="972" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#2f7a4f" text-anchor="start" font-weight="bold" font-style="normal">La LocalPref del Bloque 5 dejó de gobernar 2 prefijos /32 y pasó a gobernar todo el internet de la sede.</text>
+<rect x="880" y="690" width="780" height="300" rx="8" fill="#ffffff" stroke="#f0c9ae" stroke-width="1.6"/>
+<text x="898" y="716" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#c2410c" text-anchor="start" font-weight="bold" font-style="normal">ESTADO DEGRADADO — ISP-1 cae (interfaz hacia BR-STGO en shutdown)</text>
+<text x="898" y="748" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Ruta por defecto en BR-STGO</text>
+<rect x="1180" y="734" width="210" height="22" rx="4" fill="#ffffff" stroke="#c2410c" stroke-width="1.3"/>
+<text x="1285" y="749" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#c2410c" text-anchor="middle" font-weight="bold" font-style="normal">0.0.0.0/0  Tag 65002</text>
+<text x="1408" y="748" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">LocalPref 200 se fue con la sesión → gana la de 100</text>
+<text x="898" y="792" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">NAT: qué route-map matchea</text>
+<rect x="1180" y="778" width="210" height="22" rx="4" fill="#ffffff" stroke="#c2410c" stroke-width="1.3"/>
+<text x="1285" y="793" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#c2410c" text-anchor="middle" font-weight="bold" font-style="normal">NAT-ISP2 → 203.0.113.6</text>
+<text x="1408" y="792" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">match interface Gi3 · el NAT siguió solo</text>
+<text x="898" y="836" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Ping a internet desde V20</text>
+<rect x="1180" y="822" width="210" height="22" rx="4" fill="#ffffff" stroke="#c2410c" stroke-width="1.3"/>
+<text x="1285" y="837" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#c2410c" text-anchor="middle" font-weight="bold" font-style="normal">ttl=252  ·  vía ISP-2 (un salto más: peering)</text>
+<text x="1408" y="836" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">171 paquetes consecutivos, tras 129 s de corte</text>
+<text x="898" y="880" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Túnel a VALPO (V40A)</text>
+<rect x="1180" y="866" width="210" height="22" rx="4" fill="#ffffff" stroke="#c2410c" stroke-width="1.3"/>
+<text x="1285" y="881" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#c2410c" text-anchor="middle" font-weight="bold" font-style="normal">383/383</text>
+<text x="1408" y="880" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">383/383</text>
+<text x="1180" y="924" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#c2410c" text-anchor="start" font-weight="normal" font-style="italic">el túnel no se entera: anclado a un loopback que ambos ISP anuncian</text>
+<text x="898" y="972" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#c2410c" text-anchor="start" font-weight="bold" font-style="normal">El link del borde NO bajó (artefacto de EVE-NG). BGP lo detectó por hold timer: “ISP muerto con el cable arriba”.</text>
+<rect x="40" y="1030" width="1620" height="1.2" fill="#dde3ea"/>
+<text x="40" y="1060" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Cómo leer este diagrama</text>
+<text x="40" y="1084" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">El túnel es el protagonista porque es lo que no se ve en ningún show: una interfaz ruteable entre dos routers que no comparten cable. El NAT aparece como dos</text>
+<text x="40" y="1102" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">chips y nada más — PAT overload lo hace toda red y no diferencia a nadie. Pero está, porque los 129 s son de BGP y el internet que viene DESPUÉS es del NAT:</text>
+<text x="40" y="1120" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">un diagrama de failover sin el NAT dibuja algo que se ve bien y no funciona, que es exactamente lo que el Bloque 8 encontró (tabla verde, refcount 1, usuario sin internet).</text>
+<text x="40" y="1150" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">La política de anuncio (prepend ×2, prefix-list ANUNCIO-PROPIO) NO está dibujada a propósito: no toca el túnel ni la reconvergencia. Es otra historia —qué le cuento</text>
+<text x="40" y="1168" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">al mundo, no cómo alcanzo lo que necesito— y se defiende con un show, no con una topología. Vive en §5.2 y en el changelog: 7 prefijos anunciados → 1.</text>
+<text x="40" y="1198" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Zoom es para defender un mecanismo, no para hacer caber cosas. Este diagrama tiene un solo tema.</text>
+<rect x="40" y="1252" width="1620" height="1.2" fill="#dde3ea"/>
+<text x="40" y="1282" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="bold" font-style="normal">AustralPay y DiegoAraya son entidades FICTICIAS, con fines exclusivos de laboratorio y portafolio. Direcciones “públicas” en rangos de documentación RFC 5737.</text>
+<text x="1660" y="1282" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="italic">Medido en el Bloque 8 · §4.5, §4.7, §5.2, §5.3, §5.4, §6.4</text>
+</svg>

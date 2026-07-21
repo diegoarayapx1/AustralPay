@@ -1,0 +1,231 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1700 1265" width="1700" height="1265">
+<rect width="1700" height="1265" fill="#ffffff"/>
+<text x="40" y="44" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="24" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">AustralPay — Topología física y capa 2</text>
+<text x="40" y="68" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Bloque 8 · estado congelado 2026-07-15 23:35 UTC · consultora DiegoAraya</text>
+<text x="1660" y="44" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="12" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="normal">ARQ-002 · Topología física</text>
+<text x="1660" y="62" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="normal">1 de 3 — ver nota al pie</text>
+<rect x="40" y="80" width="1620" height="1.2" fill="#dde3ea"/>
+<rect x="620" y="100" width="440" height="108" rx="10" fill="#eef0f3" stroke="#7a8794" stroke-width="1.4" stroke-dasharray="7 5"/>
+<text x="840" y="120" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="italic">Sustrato de “internet” del laboratorio — fuera del AS de AustralPay</text>
+<rect x="650" y="132" width="165" height="62" rx="5" fill="#ffffff" stroke="#7a8794" stroke-width="1.4"/>
+<text x="732" y="155" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">ISP-1</text>
+<text x="732" y="172" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">AS 65001 · primario</text>
+<rect x="865" y="132" width="165" height="62" rx="5" fill="#ffffff" stroke="#7a8794" stroke-width="1.4"/>
+<text x="947" y="155" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="14" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">ISP-2</text>
+<text x="947" y="172" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">AS 65002 · secundario</text>
+<line x1="815" y1="163" x2="865" y2="163" stroke="#7a8794" stroke-width="2" stroke-linecap="round"/>
+<text x="840" y="157" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="8" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">peering</text>
+<rect x="60" y="240" width="700" height="680" rx="12" fill="#f7fafd" stroke="#c3d6e8" stroke-width="1.6"/>
+<text x="80" y="266" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" fill="#2563aa" text-anchor="start" font-weight="bold" font-style="normal">SITIO STGO</text>
+<text x="80" y="283" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Providencia · matriz · 10.1.0.0/16</text>
+<rect x="940" y="240" width="700" height="680" rx="12" fill="#fbf8f4" stroke="#e3d4c2" stroke-width="1.6"/>
+<text x="960" y="266" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="13" fill="#a8701c" text-anchor="start" font-weight="bold" font-style="normal">SITIO VALPO</text>
+<text x="960" y="283" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Valparaíso · sede regional de producción · 10.2.0.0/16</text>
+<line x1="350" y1="300" x2="680" y2="194" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="356" y="292" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Gi2</text>
+<line x1="470" y1="300" x2="905" y2="194" stroke="#8b9aab" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 4"/>
+<text x="480" y="292" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Gi3</text>
+<line x1="1230" y1="300" x2="800" y2="194" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1226" y="292" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="normal">Gi1</text>
+<line x1="1350" y1="300" x2="1015" y2="194" stroke="#8b9aab" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 4"/>
+<text x="1358" y="292" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Gi2</text>
+<text x="560" y="232" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="italic">ISP-1 (primario) ——   ISP-2 (secundario) - - -</text>
+<rect x="290" y="300" width="240" height="74" rx="6" fill="#e6eefb" stroke="#2563aa" stroke-width="1.6"/>
+<text x="410" y="325" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">BR-STGO</text>
+<text x="410" y="343" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">CSR1000v · IOS-XE 17.3 · borde</text>
+<rect x="1170" y="300" width="240" height="74" rx="6" fill="#e6eefb" stroke="#2563aa" stroke-width="1.6"/>
+<text x="1290" y="325" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">BR-VALPO</text>
+<text x="1290" y="343" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">CSR1000v · IOS-XE 17.3 · borde</text>
+<line x1="530" y1="337" x2="1170" y2="337" stroke="#6d3fc4" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 6"/>
+<rect x="700" y="316" width="300" height="42" rx="6" fill="#ffffff" stroke="#6d3fc4" stroke-width="1.4"/>
+<text x="850" y="333" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#6d3fc4" text-anchor="middle" font-weight="bold" font-style="normal">Tunnel0 · GRE-over-IPSec</text>
+<text x="850" y="349" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9" fill="#6d3fc4" text-anchor="middle" font-weight="normal" font-style="italic">enlace LÓGICO — viaja por los ISP, no por acá</text>
+<rect x="120" y="440" width="200" height="92" rx="6" fill="#e6f4ea" stroke="#2f7a4f" stroke-width="1.6"/>
+<text x="220" y="465" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">DLS1-STGO</text>
+<text x="220" y="483" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">vIOS-L2 · distribución/núcleo</text>
+<text x="220" y="501" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/1-1/3 → VLAN 888 · shut</text>
+<rect x="400" y="440" width="200" height="92" rx="6" fill="#e6f4ea" stroke="#2f7a4f" stroke-width="1.6"/>
+<text x="500" y="465" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">DLS2-STGO</text>
+<text x="500" y="483" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">vIOS-L2 · distribución/núcleo</text>
+<text x="500" y="501" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/1-1/3 → VLAN 888 · shut</text>
+<line x1="350" y1="374" x2="220" y2="440" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="238" y="402" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1 ↔ Gi1/0</text>
+<line x1="470" y1="374" x2="500" y2="440" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="510" y="400" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Gi4 ↔ Gi1/0</text>
+<line x1="320" y1="486" x2="400" y2="486" stroke="#2f7a4f" stroke-width="3.4" stroke-linecap="round"/>
+<text x="360" y="478" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#2f7a4f" text-anchor="middle" font-weight="normal" font-style="normal">Po1</text>
+<text x="360" y="502" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi0/0-0/1</text>
+<rect x="250" y="620" width="240" height="74" rx="6" fill="#fdf2e2" stroke="#a8701c" stroke-width="1.6"/>
+<text x="370" y="645" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">ALS1-STGO</text>
+<text x="370" y="663" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">vIOS-L2 · acceso (L2 puro)</text>
+<text x="370" y="681" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">Vlan30 10.1.30.10 · 10/10 puertos</text>
+<line x1="220" y1="532" x2="310" y2="620" stroke="#2f7a4f" stroke-width="3" stroke-linecap="round"/>
+<text x="240" y="580" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#2f7a4f" text-anchor="middle" font-weight="normal" font-style="normal">Po2</text>
+<line x1="500" y1="532" x2="430" y2="620" stroke="#2f7a4f" stroke-width="3" stroke-linecap="round"/>
+<text x="492" y="580" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#2f7a4f" text-anchor="middle" font-weight="normal" font-style="normal">Po3</text>
+<rect x="90" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="138" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">S10A</text>
+<text x="138" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">V10 · app</text>
+<line x1="98" y1="835" x2="178" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="138" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/0</text>
+<line x1="280" y1="694" x2="138" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="200" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="248" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">S15A</text>
+<text x="248" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">V15 · db</text>
+<line x1="208" y1="835" x2="288" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="248" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/1</text>
+<line x1="318" y1="694" x2="248" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="310" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="358" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">S20A</text>
+<text x="358" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">V20 · oper</text>
+<line x1="318" y1="835" x2="398" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="358" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/2</text>
+<line x1="356" y1="694" x2="358" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="420" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="468" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">S30A</text>
+<text x="468" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">V30 · gest</text>
+<line x1="428" y1="835" x2="508" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="468" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/3</text>
+<line x1="394" y1="694" x2="468" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="530" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="578" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">S50A</text>
+<text x="578" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">V50 · prot</text>
+<line x1="538" y1="835" x2="618" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="578" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi2/0</text>
+<line x1="432" y1="694" x2="578" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="640" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="688" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">S50B</text>
+<text x="688" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">V50 · prot</text>
+<line x1="648" y1="835" x2="728" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="688" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi2/1</text>
+<line x1="470" y1="694" x2="688" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1000" y="440" width="200" height="92" rx="6" fill="#e6f4ea" stroke="#2f7a4f" stroke-width="1.6"/>
+<text x="1100" y="465" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">MLS1-VALPO</text>
+<text x="1100" y="483" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">vIOS-L2 · distribución</text>
+<text x="1100" y="501" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/1-1/3 → VLAN 888 · shut</text>
+<rect x="1280" y="440" width="200" height="92" rx="6" fill="#e6f4ea" stroke="#2f7a4f" stroke-width="1.6"/>
+<text x="1380" y="465" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">MLS2-VALPO</text>
+<text x="1380" y="483" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">vIOS-L2 · distribución</text>
+<text x="1380" y="501" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/1-1/3 → VLAN 888 · shut</text>
+<line x1="1230" y1="374" x2="1100" y2="440" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1118" y="402" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi3 ↔ Gi1/0</text>
+<line x1="1350" y1="374" x2="1380" y2="440" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="1390" y="400" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Gi4 ↔ Gi1/0</text>
+<line x1="1200" y1="486" x2="1280" y2="486" stroke="#2f7a4f" stroke-width="3.4" stroke-linecap="round"/>
+<text x="1240" y="478" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#2f7a4f" text-anchor="middle" font-weight="normal" font-style="normal">Po1</text>
+<text x="1240" y="502" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi0/0-0/1</text>
+<rect x="1130" y="620" width="240" height="74" rx="6" fill="#fdf2e2" stroke="#a8701c" stroke-width="1.6"/>
+<text x="1250" y="645" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="15" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">ALS1-VALPO</text>
+<text x="1250" y="663" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">vIOS-L2 · acceso (L2 puro)</text>
+<text x="1250" y="681" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">Vlan41 10.2.41.10 · 8/8 puertos</text>
+<line x1="1100" y1="532" x2="1190" y2="620" stroke="#2f7a4f" stroke-width="3" stroke-linecap="round"/>
+<text x="1120" y="580" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#2f7a4f" text-anchor="middle" font-weight="normal" font-style="normal">Po2</text>
+<line x1="1380" y1="532" x2="1310" y2="620" stroke="#2f7a4f" stroke-width="3" stroke-linecap="round"/>
+<text x="1372" y="580" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#2f7a4f" text-anchor="middle" font-weight="normal" font-style="normal">Po3</text>
+<rect x="1030" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="1078" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">V40A</text>
+<text x="1078" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">V40 · oficina</text>
+<line x1="1038" y1="835" x2="1118" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="1078" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/0</text>
+<line x1="1170" y1="694" x2="1078" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1140" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="1188" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">V41A</text>
+<text x="1188" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#5b6b7d" text-anchor="middle" font-weight="normal" font-style="normal">V41 · gest</text>
+<line x1="1148" y1="835" x2="1228" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="1188" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/1</text>
+<line x1="1220" y1="694" x2="1188" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1250" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="1298" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">V55A</text>
+<text x="1298" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">V55 · prot</text>
+<line x1="1258" y1="835" x2="1338" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="1298" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/2</text>
+<line x1="1270" y1="694" x2="1298" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<rect x="1360" y="790" width="96" height="68" rx="4" fill="#ffffff" stroke="#9aa8b6" stroke-width="1.2"/>
+<text x="1408" y="810" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="11.5" fill="#14202e" text-anchor="middle" font-weight="bold" font-style="normal">V55B</text>
+<text x="1408" y="827" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#a8701c" text-anchor="middle" font-weight="normal" font-style="normal">V55 · prot</text>
+<line x1="1368" y1="835" x2="1448" y2="835" stroke="#e4e9ee" stroke-width="1"/>
+<text x="1408" y="850" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="9.5" fill="#8b9aab" text-anchor="middle" font-weight="normal" font-style="normal">Gi1/3</text>
+<line x1="1320" y1="694" x2="1408" y2="790" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<text x="80" y="300" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="italic">troncales podadas · nativa 999 sin uso · DTP deshabilitado</text>
+<text x="960" y="300" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="italic">troncales podadas · nativa 999 sin uso · DTP deshabilitado</text>
+<rect x="60" y="955" width="500" height="250" rx="8" fill="#fbfcfd" stroke="#dde3ea" stroke-width="1.3"/>
+<text x="80" y="980" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">Leyenda</text>
+<line x1="84" y1="998" x2="128" y2="998" stroke="#2563aa" stroke-width="2.2" stroke-linecap="round"/>
+<text x="140" y="1002" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Enlace L3 ruteado (/30) — un cable, una subred</text>
+<line x1="84" y1="1022" x2="128" y2="1022" stroke="#8b9aab" stroke-width="2.2" stroke-linecap="round" stroke-dasharray="6 4"/>
+<text x="140" y="1026" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Enlace L3 hacia el ISP secundario</text>
+<line x1="84" y1="1046" x2="128" y2="1046" stroke="#2f7a4f" stroke-width="3.4" stroke-linecap="round"/>
+<text x="140" y="1050" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">EtherChannel LACP (Po) — dos cables, una troncal</text>
+<line x1="84" y1="1070" x2="128" y2="1070" stroke="#a8701c" stroke-width="1.4" stroke-linecap="round"/>
+<text x="140" y="1074" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Puerto de acceso — port-security activo</text>
+<line x1="84" y1="1094" x2="128" y2="1094" stroke="#6d3fc4" stroke-width="3" stroke-linecap="round" stroke-dasharray="10 6"/>
+<text x="140" y="1098" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Enlace lógico (no existe físicamente)</text>
+<text x="80" y="1128" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Cajas: azul = borde (router) · verde = distribución L3 · ámbar = acceso L2</text>
+<text x="80" y="1144" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Los ISP no son equipos de AustralPay: son el sustrato del laboratorio.</text>
+<text x="80" y="1160" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="italic">IPs, áreas OSPF, HSRP y BGP → diagramas 2 y 3. Acá no caben sin mentir.</text>
+<rect x="590" y="955" width="490" height="250" rx="8" fill="#fbfcfd" stroke="#dde3ea" stroke-width="1.3"/>
+<text x="610" y="980" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#2563aa" text-anchor="start" font-weight="bold" font-style="normal">VLANs — STGO</text>
+<text x="618" y="1002" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">10</text>
+<text x="660" y="1002" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Servidores-App</text>
+<text x="830" y="1002" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.1.10.0/24</text>
+<text x="965" y="1002" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">estático</text>
+<text x="618" y="1026.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">15</text>
+<text x="660" y="1026.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Servidores-DB</text>
+<text x="830" y="1026.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.1.15.0/24</text>
+<text x="965" y="1026.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">estático</text>
+<text x="618" y="1051" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">20</text>
+<text x="660" y="1051" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Operaciones</text>
+<text x="830" y="1051" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.1.20.0/24</text>
+<text x="965" y="1051" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">DHCP 7 d</text>
+<text x="618" y="1075.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">30</text>
+<text x="660" y="1075.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Gestión</text>
+<text x="830" y="1075.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.1.30.0/24</text>
+<text x="965" y="1075.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">estático</text>
+<text x="618" y="1100" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">50</text>
+<text x="660" y="1100" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Invitados</text>
+<text x="830" y="1100" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.1.50.0/24</text>
+<text x="965" y="1100" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">DHCP 2 h</text>
+<text x="618" y="1124.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">99</text>
+<text x="660" y="1124.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Tránsito OSPF</text>
+<text x="830" y="1124.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.255.99.0/30</text>
+<text x="965" y="1124.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">estático</text>
+<text x="618" y="1149" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">888</text>
+<text x="660" y="1149" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">PARKING-NO-USADO</text>
+<text x="830" y="1149" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">— sin SVI</text>
+<text x="965" y="1149" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">VLAN en shutdown</text>
+<text x="618" y="1173.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">999</text>
+<text x="660" y="1173.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Nativa (sin uso)</text>
+<text x="830" y="1173.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">—</text>
+<text x="965" y="1173.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">—</text>
+<rect x="1110" y="955" width="490" height="250" rx="8" fill="#fbfcfd" stroke="#dde3ea" stroke-width="1.3"/>
+<text x="1130" y="980" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12.5" fill="#a8701c" text-anchor="start" font-weight="bold" font-style="normal">VLANs — VALPO</text>
+<text x="1138" y="1002" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">40</text>
+<text x="1180" y="1002" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Oficina regional</text>
+<text x="1350" y="1002" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.2.40.0/24</text>
+<text x="1485" y="1002" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">DHCP 7 d</text>
+<text x="1138" y="1026.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">41</text>
+<text x="1180" y="1026.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Gestión</text>
+<text x="1350" y="1026.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.2.41.0/24</text>
+<text x="1485" y="1026.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">estático</text>
+<text x="1138" y="1051" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">55</text>
+<text x="1180" y="1051" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Invitados</text>
+<text x="1350" y="1051" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.2.55.0/24</text>
+<text x="1485" y="1051" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">DHCP 2 h</text>
+<text x="1138" y="1075.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">99</text>
+<text x="1180" y="1075.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Tránsito OSPF</text>
+<text x="1350" y="1075.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">10.255.99.4/30</text>
+<text x="1485" y="1075.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">estático</text>
+<text x="1138" y="1100" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">888</text>
+<text x="1180" y="1100" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">PARKING-NO-USADO</text>
+<text x="1350" y="1100" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">— sin SVI</text>
+<text x="1485" y="1100" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">VLAN en shutdown</text>
+<text x="1138" y="1124.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10.5" fill="#14202e" text-anchor="start" font-weight="bold" font-style="normal">999</text>
+<text x="1180" y="1124.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">Nativa (sin uso)</text>
+<text x="1350" y="1124.5" font-family="'SF Mono',Menlo,Consolas,'Liberation Mono',monospace" font-size="10" fill="#5b6b7d" text-anchor="start" font-weight="normal" font-style="normal">—</text>
+<text x="1485" y="1124.5" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="9.5" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">—</text>
+<text x="1130" y="1160" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">Los 12 puertos en VLAN 888 (3 por switch L3) son el</text>
+<text x="1130" y="1176" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="start" font-weight="normal" font-style="normal">inventario disponible, no puertos quemados: §7.4.</text>
+<rect x="40" y="1225" width="1620" height="1.2" fill="#dde3ea"/>
+<text x="40" y="1252" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10.5" fill="#5b6b7d" text-anchor="start" font-weight="bold" font-style="normal">AustralPay y DiegoAraya son entidades FICTICIAS, con fines exclusivos de laboratorio y portafolio. Direcciones “públicas” en rangos RFC 5737.</text>
+<text x="1660" y="1252" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="10" fill="#8b9aab" text-anchor="end" font-weight="normal" font-style="italic">El nodo Intruso del test de port-security (B7) sigue en el .unl y no se dibuja: delta declarado, §11.3.</text>
+</svg>

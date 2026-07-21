@@ -1,0 +1,266 @@
+! ============================================================================
+! AustralPay — configuración sanitizada para repositorio
+! Equipo : MLS2-VALPO  ·  Rol: distribución VALPO (vIOS-L2, IOS 15.2)
+! Captura: 2026-07-15 23:34 UTC — cierre del Bloque 8
+!
+! (!) AustralPay y la consultora DiegoAraya son entidades FICTICIAS, creadas
+!     exclusivamente con fines de laboratorio y portafolio. Ninguna dirección,
+!     dispositivo o configuración corresponde a una red real.
+!
+! SANITIZACIÓN — reemplazado por <REDACTED>:
+!   · enable secret / username secret .......... hash tipo 8 (SHA256)
+!   · ntp authentication-key ................... tipo 7 (reversible)
+!   · banners EULA de IOSv ..................... texto legal de Cisco, x3
+!
+! INTACTO: direccionamiento, ACLs de política, HSRP, RPVST+, OSPF, DHCP,
+!          EtherChannel, descripciones.
+!
+! Roles HSRP de este equipo: ACTIVO en V41 / V55 (prioridad 105)
+!                            STANDBY en V40 (prioridad 100 implícita)
+! Root RPVST+ : primario en V41/V55, secundario en V40
+! DHCP        : mitad alta del split-scope (.133-.254) de V40 y V55
+! ============================================================================
+!
+version 15.2
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+service compress-config
+!
+hostname MLS2-VALPO
+!
+boot-start-marker
+boot-end-marker
+!
+enable secret 8 <REDACTED>
+!
+username admin privilege 15 secret 8 <REDACTED>
+username operador privilege 14 secret 8 <REDACTED>
+no aaa new-model
+!
+vtp mode transparent
+!
+ip dhcp excluded-address 10.2.40.1 10.2.40.132
+ip dhcp excluded-address 10.2.55.1 10.2.55.132
+!
+ip dhcp pool VLAN40-OFICINA
+ network 10.2.40.0 255.255.255.0
+ default-router 10.2.40.1
+ dns-server 9.9.9.9
+ lease 7
+!
+ip dhcp pool VLAN55-INVITADOS
+ network 10.2.55.0 255.255.255.0
+ default-router 10.2.55.1
+ dns-server 9.9.9.9
+ lease 0 2
+!
+no ip domain-lookup
+ip domain-name australpay.lab
+ip cef
+login block-for 120 attempts 3 within 60
+login delay 1
+login on-failure log
+login on-success log
+no ipv6 cef
+!
+spanning-tree mode rapid-pvst
+spanning-tree extend system-id
+spanning-tree vlan 40 priority 28672
+spanning-tree vlan 41,55 priority 24576
+!
+vlan 40
+ name OFICINA-REGIONAL
+!
+vlan 41
+ name GESTION
+!
+vlan 55
+ name Invitados
+!
+vlan 99
+ name TRANSITO-OSPF
+!
+vlan 888
+ name PARKING-NO-USADO
+ shutdown
+!
+vlan 999
+ name NATIVA-SIN-USO
+!
+track 1 interface GigabitEthernet1/0 line-protocol
+!
+interface Port-channel1
+ switchport trunk allowed vlan 40,41,55,99
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface Port-channel3
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+!
+interface GigabitEthernet0/0
+ switchport trunk allowed vlan 40,41,55,99
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/1
+ switchport trunk allowed vlan 40,41,55,99
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 1 mode active
+!
+interface GigabitEthernet0/2
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 3 mode active
+!
+interface GigabitEthernet0/3
+ switchport trunk allowed vlan 40,41,55
+ switchport trunk encapsulation dot1q
+ switchport trunk native vlan 999
+ switchport mode trunk
+ switchport nonegotiate
+ negotiation auto
+ channel-group 3 mode active
+!
+interface GigabitEthernet1/0
+ no switchport
+ ip address 10.255.2.5 255.255.255.252
+ ip ospf network point-to-point
+ negotiation auto
+!
+interface GigabitEthernet1/1
+ description PUERTO NO USADO - PARQUEADO B8
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/2
+ description PUERTO NO USADO - PARQUEADO B8
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ negotiation auto
+!
+interface GigabitEthernet1/3
+ description PUERTO NO USADO - PARQUEADO B8
+ switchport access vlan 888
+ switchport mode access
+ switchport nonegotiate
+ shutdown
+ negotiation auto
+!
+interface Vlan40
+ ip address 10.2.40.3 255.255.255.0
+ ip access-group POL-V40-OFICINA in
+ standby version 2
+ standby 40 ip 10.2.40.1
+ standby 40 preempt delay minimum 30
+ standby 40 track 1 decrement 10
+!
+interface Vlan41
+ ip address 10.2.41.3 255.255.255.0
+ standby version 2
+ standby 41 ip 10.2.41.1
+ standby 41 priority 105
+ standby 41 preempt delay minimum 30
+ standby 41 track 1 decrement 10
+!
+interface Vlan55
+ description Invitados
+ ip address 10.2.55.3 255.255.255.0
+ ip access-group POL-V55-INV in
+ standby version 2
+ standby 55 ip 10.2.55.1
+ standby 55 priority 105
+ standby 55 preempt delay minimum 30
+ standby 55 track 1 decrement 10
+!
+interface Vlan99
+ ip address 10.255.99.6 255.255.255.252
+ ip ospf network point-to-point
+!
+router ospf 1
+ router-id 10.2.1.2
+ passive-interface default
+ no passive-interface GigabitEthernet1/0
+ no passive-interface Vlan99
+ network 10.2.40.0 0.0.0.255 area 2
+ network 10.2.41.0 0.0.0.255 area 2
+ network 10.2.55.0 0.0.0.255 area 2
+ network 10.255.2.4 0.0.0.3 area 2
+ network 10.255.99.4 0.0.0.3 area 2
+!
+ip forward-protocol nd
+!
+no ip http server
+no ip http secure-server
+!
+ip ssh version 2
+ip ssh server algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+ip ssh client algorithm encryption aes128-ctr aes192-ctr aes256-ctr
+!
+ip access-list standard MGMT-VTY-ACCESS
+ permit 10.2.41.0 0.0.0.255
+ permit 10.1.30.0 0.0.0.255
+ deny   any log
+!
+ip access-list extended POL-V40-OFICINA
+ permit udp any host 10.2.40.2 eq bootps
+ permit udp any host 10.2.40.3 eq bootps
+ permit icmp 10.2.40.0 0.0.0.255 10.2.41.0 0.0.0.255 echo-reply
+ deny   ip any 10.0.0.0 0.255.255.255
+ permit ip any any
+ip access-list extended POL-V55-INV
+ permit udp any host 10.2.55.2 eq bootps
+ permit udp any host 10.2.55.3 eq bootps
+ permit icmp 10.2.55.0 0.0.0.255 10.2.41.0 0.0.0.255 echo-reply
+ deny   ip any 10.0.0.0 0.255.255.255
+ permit ip any any
+!
+control-plane
+!
+banner exec ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner incoming ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+banner login ^C <REDACTED — EULA de Cisco IOSv, incluido con la imagen> ^C
+!
+line con 0
+ logging synchronous
+ login local
+line aux 0
+line vty 0 4
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+line vty 5 15
+ access-class MGMT-VTY-ACCESS in
+ login local
+ transport input ssh
+!
+ntp authentication-key 1 md5 <REDACTED> 7
+ntp authenticate
+ntp trusted-key 1
+ntp source Vlan41
+ntp server 10.1.30.254 key 1
+!
+end
