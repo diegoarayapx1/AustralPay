@@ -1,8 +1,15 @@
+# AustralPay — Red empresarial de dos sedes
+
+**Red de dos sedes en EVE-NG probada flujo por flujo: 59/59 pruebas de conectividad y failover medido con tráfico continuo.**
+
 > ⚠️ **AustralPay y la consultora DiegoAraya son entidades FICTICIAS, creadas exclusivamente con fines de laboratorio y portafolio. Ninguna dirección, dispositivo, ISP o dato descrito corresponde a una red, cliente o proveedor real. Este proyecto no fue trabajo para un cliente real.**
 
----
+- **59/59** en la matriz de conectividad, probando lo permitido *y* lo bloqueado, con la predicción escrita antes de cada prueba.
+- **Failover medido con ping continuo:** ~129 s al caer un ISP (detección estándar de BGP; BFD queda propuesto para producción) y ~5 s al caer un switch de distribución.
+- **11 discrepancias** entre el diseño documentado y los equipos reales, encontradas y corregidas, con la causa de cada una registrada.
+- **7 ACLs de lista blanca** (denegar por defecto) para la segmentación por VLAN, incluida la separación app/base de datos.
 
-# AustralPay — Red empresarial de dos sedes
+---
 
 Diseño, implementación y **verificación completa** de la red corporativa de una fintech ficticia con dos sedes: matriz en Santiago y sede regional de producción en Valparaíso. Construida desde cero sobre EVE-NG con equipos Cisco, a lo largo de ocho bloques de trabajo, cada uno cerrado con su verificación y su documentación.
 
@@ -34,6 +41,10 @@ No es una topología que "funciona". Es una red **probada flujo por flujo** —m
 ```
 
 **Multihoming BGP** a dos ISP por sede · **OSPF multiárea** (área 0 en el túnel, 1 en STGO, 2 en VALPO) · **VPN GRE-over-IPSec** cifrada · **redundancia por capa** (HSRP, EtherChannel, RPVST+) · **segmentación de seguridad** de lista blanca · IPv4 puro, RFC 5737 para el espacio público.
+
+![Topología física y capa 2 de AustralPay](docs/ARQ-002_Topologia_Fisica.svg)
+
+*Topología física y capa 2 ([ARQ-002](docs/ARQ-002_Topologia_Fisica.svg)). Distribución y HSRP en [ARQ-003](docs/ARQ-003_Distribucion_HSRP.svg); WAN, BGP y el túnel en [ARQ-004](docs/ARQ-004_WAN_BGP_VPN.svg).*
 
 ---
 
